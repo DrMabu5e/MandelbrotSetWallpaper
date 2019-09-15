@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Numerics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace Mandelbrot_Set_Wallpaper
 {
@@ -31,62 +32,56 @@ namespace Mandelbrot_Set_Wallpaper
         }
         private int maxIter;
 
-        public int ResolutionX { get; set; } = 2560;
-        public int ResolutionY { get; set; } = 1440;
+        public int ResolutionX { get; set; } = 4096;
+        public int ResolutionY { get; set; } = 2304;
 
-        public double StartRE { get; set; } = -3;
-        public double StartIM { get; set; } = -1.125;
+        public double StartRE { get; set; } = -1;
+        public double StartIM { get; set; } = 1;
 
-        public double EndRE { get; set; } = 1;
-        public double EndIM { get; set; } = 1.125;
+        public double EndRE { get; set; } = 0;
+        public double EndIM { get; set; } = 0.4375;
 
         
-        public double NumberOfIterations(Complex c)
+        public double NumberOfIterationsPerMaxIter(Complex c)
         {
+            
             Complex z = new Complex(0.0, 0.0);
-            double n = 0;
-
-            while (System.Numerics.Complex.Abs(z) <= 2 && n < MaxIter)
+            int iterations = 0;
+            do
             {
                 z = z * z + c;
-                n+=1;
-            }
-            if (n == MaxIter)
+                iterations += 1;
+            } while (System.Numerics.Complex.Abs(z) <= 2.0 && iterations < MaxIter);
+            if (iterations < MaxIter)
             {
-                return MaxIter;
+                return (double)iterations / MaxIter;
             }
             else
             {
-                double log2ofz = System.Math.Log(System.Numerics.Complex.Abs(z)) / System.Math.Log(2);
-                double result = n + 1.0 - System.Math.Log(log2ofz);
-                return result;
+                return 0.0;
             }
 
         }
 
-        public static Color ColorFromHSV(double hue, double saturation, double value)
+   
+        public Color GetColor(double value)
         {
-            int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
-            double f = hue / 60 - Math.Floor(hue / 60);
+            const double MaxColor = 256;
+            const double ContrastValue = 0.2;
+            return Color.FromArgb(0, 0, (int)(MaxColor * Math.Pow(value, ContrastValue)));
+        }
 
-            value = value * 255;
-            int v = Convert.ToInt32(value);
-            int p = Convert.ToInt32(value * (1 - saturation));
-            int q = Convert.ToInt32(value * (1 - f * saturation));
-            int t = Convert.ToInt32(value * (1 - (1 - f) * saturation));
+        public Color GetColor2(double value)
+        {
+            double hue = 30.0 + 255.0 * value;
+            int saturation = 140;
+            int luminosity = 0;
+            if (value<MaxIter) { luminosity = 100; }
+            
+            HslColor col = new Microsoft.VisualStudio.Modeling.Diagrams.HslColor(Convert.ToInt32(hue),saturation,luminosity);
+            Color rgbcol = col.ToRgbColor();
 
-            if (hi == 0)
-                return Color.FromArgb(255, v, t, p);
-            else if (hi == 1)
-                return Color.FromArgb(255, q, v, p);
-            else if (hi == 2)
-                return Color.FromArgb(255, p, v, t);
-            else if (hi == 3)
-                return Color.FromArgb(255, p, q, v);
-            else if (hi == 4)
-                return Color.FromArgb(255, t, p, v);
-            else
-                return Color.FromArgb(255, v, p, q);
+            return rgbcol;
         }
 
         public void plot()
@@ -104,26 +99,43 @@ namespace Mandelbrot_Set_Wallpaper
                 {
                     //var c = new Complex(StartRE + (x / ResolutionX) * (EndRE - StartRE), StartIM + (y / ResolutionY) * (EndIM - StartIM));
 
-                    var c = new Complex(StartRE + (x / rx) * (EndRE - StartRE), StartIM + (y / ry) * (EndIM - StartIM));
-                    double m = NumberOfIterations(c);
+                    //var c = new Complex(StartRE + (x / rx) * (EndRE - StartRE), StartIM + (y / ry) * (EndIM - StartIM));
+                    //double m = NumberOfIterationsPerMaxIter(c);
+
+                    //int color = 255 - (m * 255 / MaxIter);
 
                     //int color = 255 - (m * 255 / MaxIter);
 
                     //Color col = System.Drawing.Color.FromArgb(color);
 
-                    double hue = 255.0 * m / MaxIter;
-                    int sat = 1;
-                    int val = 0;
-                    if (m < MaxIter) { val = 1; }
+                    //double hue = 255.0 * m / MaxIter;
+                    //int sat = 1;
+                    //int val = 0;
+                    //if (m < MaxIter) { val = 1; }
 
-                    Color col = ColorFromHSV(hue, sat, val);
+                    //Color col = ColorFromHSV(hue, sat, val);
+
+                    
+
+                    double Re = StartRE + (x / rx) * (EndRE - StartRE);
+                    double Im = StartIM + (y / ry) * (EndIM - StartIM);
+
+                    Complex c = new Complex(Re, Im);
+
+                    double m = NumberOfIterationsPerMaxIter(c);
+
+                    //double color = 255 - (m * 255);
+                   
+                    //Color col = System.Drawing.Color.FromArgb(Convert.ToInt32(color));
+
+                    Color col = GetColor2(m);
 
                     wallpaper.SetPixel(x, y, col);
                     
                 }
             }
 
-            wallpaper.Save("C:\\Users\\smilj\\Pictures\\WallpaperHUE.png", System.Drawing.Imaging.ImageFormat.Png);
+            wallpaper.Save("C:\\Users\\smilj\\Pictures\\Wallpaper.png", System.Drawing.Imaging.ImageFormat.Png);
         }
     }
 
