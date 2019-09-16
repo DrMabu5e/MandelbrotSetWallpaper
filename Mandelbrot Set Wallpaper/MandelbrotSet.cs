@@ -27,13 +27,13 @@ namespace Mandelbrot_Set_Wallpaper
             get { return maxIter; }
             set {
                 if (value > 0 && value <= 2000)
-                    maxIter = value;
+                     maxIter = value;
                 else
                     maxIter = 80;
                 }
         }
         private int maxIter;
-
+        //maxIter = (value > 0 && value <= 2000) ? value :  80; 
         public int ResolutionX { get; set; } = 4096;
         public int ResolutionY { get; set; } = 2304;
 

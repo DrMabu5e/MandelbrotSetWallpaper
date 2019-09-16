@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Configuration">
-
+    <!-- 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -29,37 +29,47 @@
             <Label VerticalAlignment="Center" Foreground="White">Variables</Label>
         </Border>
 
+-->
 
-
-        <!-- Folder Location -->
+        <!-- Folder Location 
         <Label Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">Folder Location</Label>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="C:\Users\smilj\Pictures\"></TextBox>
-
-        <!-- File Name -->
+    -->
+    <!-- File Name 
         <Label Grid.Column="0" Grid.Row="2" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">File Name</Label>
         <TextBox Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="ReallyCoolWallpaper"></TextBox>
-
-        <!-- Size -->
+    -->
+    <!-- Size 
         <Label Grid.Column="0" Grid.Row="3" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">Size</Label>
         <TextBox Name="ResX" Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="4096"></TextBox>
         <TextBox Name="ResY" Grid.Column="2" Grid.Row="3" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="2304"></TextBox>
-
-        <!-- Maximum Iterations -->
+    -->
+    <!-- Maximum Iterations 
         <Label Grid.Column="0" Grid.Row="4" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">Maximum Iterations</Label>
         <TextBox Name="MaxIt" Grid.Column="1" Grid.Row="4" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="600"></TextBox>
-
-        <!-- Start Position -->
+    -->
+    <!-- Start Position 
         <Label Grid.Column="0" Grid.Row="5" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black">Start Re and Im</Label>
         <TextBox Name="StRe" Grid.Column="1" Grid.Row="5" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="-1"></TextBox>
         <TextBox Name="StIm" Grid.Column="2" Grid.Row="5" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="1"></TextBox>
-        <!-- End Position -->
+    -->
+        <!-- End Position 
         <Label Grid.Column="0" Grid.Row="6" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">End Re and Im</Label>
         <TextBox Name="EnRe" Grid.Column="1" Grid.Row="6" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="0"></TextBox>
         <TextBox Name="EnIm" Grid.Column="2" Grid.Row="6" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Left" Text="0,4375"></TextBox>
+    -->
 
-
-
-        <Button Grid.Column="3" Grid.Row="7" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Right" Click="Button_Click">Create</Button>
+    <!--
+    <Button Grid.Column="3" Grid.Row="7" Margin="0,10,0,0" Width="125" Height="25" HorizontalAlignment="Right" Click="Button_Click">Create</Button>
         <Image Name="PreviewWindow" Grid.Column="3" HorizontalAlignment="Left" Height="225" Margin="10,10,0,0" Grid.RowSpan="7" VerticalAlignment="Top" Width="400"/>
     </Grid>
+    -->
+    <WrapPanel>
+        <StackPanel>
+            <!-- User Input --!>
+            
+        </StackPanel>
+        
+        <Image Name="PreviewWindow" Grid.Column="3" HorizontalAlignment="Left" Height="225" Margin="10,10,0,0" Grid.RowSpan="7" VerticalAlignment="Top" Width="400"/>
+    </WrapPanel>
 </Page>
