@@ -10,18 +10,11 @@ using System.Drawing.Imaging;
 using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.Modeling.Diagrams;
 
+
 namespace Mandelbrot_Set_Wallpaper
 {
     public class MandelbrotSet
     {
-        ///private int maxIter;
-        ///private int resolutionX;
-        ///private int resolutionY;
-        ///private int startRE;
-        ///private int startIM;
-        ///private int endRE;
-        ///private int endIM;
-
         public int MaxIter
         {
             get { return maxIter; }
@@ -96,14 +89,12 @@ namespace Mandelbrot_Set_Wallpaper
             double rx = Convert.ToDouble(previewX);
             double ry = Convert.ToDouble(previewY);
 
+            MaxIter = 80;
+
             for (int x = 0; x < previewX; x++)
             {
                 for (int y = 0; y < previewY; y++)
                 {
-
-
-
-
                     double Re = StartRE + (x / rx) * (EndRE - StartRE);
                     double Im = StartIM + (y / ry) * (EndIM - StartIM);
 
@@ -111,16 +102,14 @@ namespace Mandelbrot_Set_Wallpaper
 
                     double m = NumberOfIterationsPerMaxIter(c);
 
-
-
-                    Color col = GetColor2(m);
+                    Color col = GetColor(m);
 
                     preview.SetPixel(x, y, col);
-                    
-
                 }
             }
+
             MemoryStream ms = new MemoryStream();
+
             preview.Save(ms, ImageFormat.Png);
             ms.Position = 0;
 
@@ -128,34 +117,23 @@ namespace Mandelbrot_Set_Wallpaper
             previewImage.StreamSource = ms;
             previewImage.CacheOption = BitmapCacheOption.OnLoad;
             previewImage.EndInit();
+
             previewImage.Freeze();
 
-            return previewImage;
-
-            
-
-            
+            return previewImage;  
         }
 
 
         public void plot()
         {
-            
             Bitmap wallpaper = new Bitmap(ResolutionX, ResolutionY);
             double rx = Convert.ToDouble(ResolutionX);
             double ry = Convert.ToDouble(ResolutionY);
-
-
-
 
             for (int x = 0; x < ResolutionX; x++)
             {
                 for (int y = 0; y < ResolutionY; y++)
                 {
-                    
-
-                    
-
                     double Re = StartRE + (x / rx) * (EndRE - StartRE);
                     double Im = StartIM + (y / ry) * (EndIM - StartIM);
 
@@ -163,19 +141,12 @@ namespace Mandelbrot_Set_Wallpaper
 
                     double m = NumberOfIterationsPerMaxIter(c);
 
-                    
-
                     Color col = GetColor2(m);
 
                     wallpaper.SetPixel(x, y, col);
-                    
                 }
             }
-
             wallpaper.Save("C:\\Users\\smilj\\Pictures\\Wallpaper.png", System.Drawing.Imaging.ImageFormat.Png);
         }
-    }
-
-    
-    
+    } 
 }

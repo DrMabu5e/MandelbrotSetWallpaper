@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Mandelbrot_Set_Wallpaper
 {
     /// <summary>
@@ -29,9 +30,8 @@ namespace Mandelbrot_Set_Wallpaper
         {
             MandelbrotSet mandl = new MandelbrotSet();
 
-            mandl.MaxIter = Int32.Parse(MaxIt.Text);
-            mandl.ResolutionX = Int32.Parse(ResX.Text);
-            mandl.ResolutionY = Int32.Parse(ResY.Text);
+            //mandl.MaxIter = Int32.Parse(MaxIt.Text);
+            
             mandl.StartRE = Convert.ToDouble(StRe.Text);
             mandl.StartIM = Convert.ToDouble(StIm.Text);
             mandl.EndRE = Convert.ToDouble(EnRe.Text);
@@ -39,6 +39,11 @@ namespace Mandelbrot_Set_Wallpaper
             PreviewWindow.Source = mandl.PlotPreview();
 
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
