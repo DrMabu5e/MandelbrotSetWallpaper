@@ -102,7 +102,7 @@ namespace Mandelbrot_Set_Wallpaper
 
                     double m = NumberOfIterationsPerMaxIter(c);
 
-                    Color col = GetColor(m);
+                    Color col = GetColor2(m);
 
                     preview.SetPixel(x, y, col);
                 }

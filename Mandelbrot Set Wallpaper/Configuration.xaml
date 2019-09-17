@@ -66,20 +66,27 @@
     -->
     <WrapPanel>
         <StackPanel>
-            <!-- User Input -->
+            <!-- User Input 
+            <TextBlock Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="LightSkyBlue">Start Position</TextBlock> -->
+            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="LightSkyBlue" >Start Position</Label>
+            
             <WrapPanel>
-                <Label Margin="0,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black">Start Re</Label>
-                
+                <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black"> Re </Label>
                 <TextBox Name="StRe" Margin="0,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="-1"></TextBox>
                 <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black"> Im </Label>
                 <TextBox Name="StIm" Margin="0,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="1"></TextBox>
             </WrapPanel>
+            
+            <Label Margin="0,10,0,0" Content="End Position" HorizontalContentAlignment="Center" Background="LightSkyBlue"/>
+            
             <WrapPanel>
-                <Label Margin="0,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">End Re</Label>
+                <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center"> Re </Label>
                 <TextBox Name="EnRe" Margin="0,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="0"></TextBox>
-                <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black">Im</Label>
+                <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black"> Im </Label>
                 <TextBox Name="EnIm" Margin="0,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="0,4375"></TextBox>
             </WrapPanel>
+            
+            
         </StackPanel>
         <StackPanel>
             <Image Name="PreviewWindow" HorizontalAlignment="Left" Height="225" Margin="10,10,0,0" VerticalAlignment="Top" Width="400"/>
