@@ -41,9 +41,20 @@ namespace Mandelbrot_Set_Wallpaper
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Save2File_Click(object sender, RoutedEventArgs e)
         {
-            
+            MandelbrotSet mandl = new MandelbrotSet();
+
+            mandl.MaxIter = Convert.ToInt32(MxIt.Text);
+
+            mandl.ResolutionX = Convert.ToInt32(RsX.Text);
+            mandl.ResolutionY = Convert.ToInt32(RsY.Text);
+
+            mandl.StartRE = Convert.ToDouble(StRe.Text);
+            mandl.StartIM = Convert.ToDouble(StIm.Text);
+            mandl.EndRE = Convert.ToDouble(EnRe.Text);
+            mandl.EndIM = Convert.ToDouble(EnIm.Text);
+            mandl.plot();
         }
     }
 }
