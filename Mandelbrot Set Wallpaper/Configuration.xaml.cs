@@ -24,6 +24,7 @@ namespace Mandelbrot_Set_Wallpaper
         public Configuration()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,6 +37,9 @@ namespace Mandelbrot_Set_Wallpaper
             mandl.StartIM = Convert.ToDouble(StIm.Text);
             mandl.EndRE = Convert.ToDouble(EnRe.Text);
             mandl.EndIM = Convert.ToDouble(EnIm.Text);
+
+            mandl.ColorMode = ColorCombobox.Text;
+
             PreviewWindow.Source = mandl.PlotPreview();
 
 
@@ -55,6 +59,11 @@ namespace Mandelbrot_Set_Wallpaper
             mandl.EndRE = Convert.ToDouble(EnRe.Text);
             mandl.EndIM = Convert.ToDouble(EnIm.Text);
             mandl.plot();
+        }
+
+        private void ColorCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

@@ -36,7 +36,9 @@ namespace Mandelbrot_Set_Wallpaper
         public double EndRE { get; set; } = 0;
         public double EndIM { get; set; } = 0.4375;
 
-        
+        public string ColorMode { get; set; } = "RGB";
+
+
         public double NumberOfIterationsPerMaxIter(Complex c)
         {
             
@@ -59,14 +61,14 @@ namespace Mandelbrot_Set_Wallpaper
         }
 
    
-        public Color GetColor(double value)
+        public Color GetColorRGB(double value)
         {
             const double MaxColor = 256;
             const double ContrastValue = 0.2;
             return Color.FromArgb(0, 0, (int)(MaxColor * Math.Pow(value, ContrastValue)));
         }
 
-        public Color GetColor2(double value)
+        public Color GetColorHSV(double value)
         {
             double hue = 30.0 + 255.0 * value;
             int saturation = 140;
@@ -102,7 +104,17 @@ namespace Mandelbrot_Set_Wallpaper
 
                     double m = NumberOfIterationsPerMaxIter(c);
 
-                    Color col = GetColor2(m);
+                    Color col = new Color();
+
+                    switch (ColorMode)
+                    {
+                        case "RGB":
+                            col = GetColorRGB(m);
+                            break;
+                        case "HSV":
+                            col = GetColorHSV(m);
+                            break;
+                    }
 
                     preview.SetPixel(x, y, col);
                 }
@@ -141,12 +153,26 @@ namespace Mandelbrot_Set_Wallpaper
 
                     double m = NumberOfIterationsPerMaxIter(c);
 
-                    Color col = GetColor2(m);
+                    Color col = new Color();
+
+                    switch (ColorMode)
+                    {
+                        case "RGB":
+                            col = GetColorRGB(m);
+                            break;
+                        case "HSV":
+                            col = GetColorHSV(m);
+                            break;
+                    }
 
                     wallpaper.SetPixel(x, y, col);
                 }
             }
-            wallpaper.Save("C:\\Users\\smilj\\Pictures\\Wallpaper.png", System.Drawing.Imaging.ImageFormat.Png);
+            //string SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "Wallpaper.png";
+
+            
+
+            wallpaper.Save("Wallpaper.png", System.Drawing.Imaging.ImageFormat.Png);
         }
     } 
 }
