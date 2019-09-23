@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mandelbrot_Set_Wallpaper"
         mc:Ignorable="d"
-        Title="MandelbrotWallpaper" Height="450" Width="610" Source="Configuration.xaml">
+        Title="MandelbrotWallpaper" Height="450" Width="620" Source="Configuration.xaml">
     
 
 </NavigationWindow>

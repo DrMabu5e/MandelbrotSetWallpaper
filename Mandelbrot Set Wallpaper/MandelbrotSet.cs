@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Numerics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Windows;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 using Microsoft.VisualStudio.Modeling.Diagrams;
 
 
@@ -60,7 +62,19 @@ namespace Mandelbrot_Set_Wallpaper
 
         }
 
-   
+        public void SaveToFile()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = "Wallpaper";
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*";
+
+        }
+
+        
+        
+
+
         public Color GetColorRGB(double value)
         {
             const double MaxColor = 256;
@@ -142,37 +156,42 @@ namespace Mandelbrot_Set_Wallpaper
             double rx = Convert.ToDouble(ResolutionX);
             double ry = Convert.ToDouble(ResolutionY);
 
-            for (int x = 0; x < ResolutionX; x++)
+            SaveFileDialog dlg = new SaveFileDialog();
+
+            dlg.FileName = "Wallpaper";
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "Image Files(*.png)| *.png | All files(*.*) | *.*";
+
+            if (dlg.ShowDialog() == true)
             {
-                for (int y = 0; y < ResolutionY; y++)
+                for (int x = 0; x < ResolutionX; x++)
                 {
-                    double Re = StartRE + (x / rx) * (EndRE - StartRE);
-                    double Im = StartIM + (y / ry) * (EndIM - StartIM);
-
-                    Complex c = new Complex(Re, Im);
-
-                    double m = NumberOfIterationsPerMaxIter(c);
-
-                    Color col = new Color();
-
-                    switch (ColorMode)
+                    for (int y = 0; y < ResolutionY; y++)
                     {
-                        case "RGB":
-                            col = GetColorRGB(m);
-                            break;
-                        case "HSV":
-                            col = GetColorHSV(m);
-                            break;
+                        double Re = StartRE + (x / rx) * (EndRE - StartRE);
+                        double Im = StartIM + (y / ry) * (EndIM - StartIM);
+
+                        Complex c = new Complex(Re, Im);
+
+                        double m = NumberOfIterationsPerMaxIter(c);
+
+                        Color col = new Color();
+
+                        switch (ColorMode)
+                        {
+                            case "RGB":
+                                col = GetColorRGB(m);
+                                break;
+                            case "HSV":
+                                col = GetColorHSV(m);
+                                break;
+                        }
+                        wallpaper.SetPixel(x, y, col);
                     }
-
-                    wallpaper.SetPixel(x, y, col);
                 }
+                wallpaper.Save(dlg.FileName, System.Drawing.Imaging.ImageFormat.Png);
             }
-            //string SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "Wallpaper.png";
-
-            
-
-            wallpaper.Save("Wallpaper.png", System.Drawing.Imaging.ImageFormat.Png);
         }
     } 
 }

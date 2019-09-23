@@ -58,6 +58,9 @@ namespace Mandelbrot_Set_Wallpaper
             mandl.StartIM = Convert.ToDouble(StIm.Text);
             mandl.EndRE = Convert.ToDouble(EnRe.Text);
             mandl.EndIM = Convert.ToDouble(EnIm.Text);
+
+            mandl.ColorMode = ColorCombobox.Text;
+
             mandl.plot();
         }
 
