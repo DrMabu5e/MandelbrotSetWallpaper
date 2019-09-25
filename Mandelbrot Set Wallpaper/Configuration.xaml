@@ -9,7 +9,7 @@
       Title="Configuration">
 
     <StackPanel>
-        <WrapPanel>
+        <WrapPanel HorizontalAlignment="Stretch">
             <StackPanel>
                 <!-- Start Postions -->
                 
@@ -74,7 +74,7 @@
             
                 
                 
-            <Canvas Height="Auto" Width="Auto" HorizontalAlignment="Stretch">
+            <Canvas Width="auto" Height="auto" HorizontalAlignment="Stretch">
                 <Image Name="PreviewWindow" Height="225" Margin="10,10,0,0" VerticalAlignment="Top" Width="400"/>
     
                 <WrapPanel Canvas.Right="10" Canvas.Bottom="10" HorizontalAlignment="Right" VerticalAlignment="Bottom">
