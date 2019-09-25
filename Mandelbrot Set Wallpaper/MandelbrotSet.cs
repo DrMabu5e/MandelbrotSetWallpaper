@@ -59,21 +59,7 @@ namespace Mandelbrot_Set_Wallpaper
             {
                 return 0.0;
             }
-
         }
-
-        public void SaveToFile()
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.FileName = "Wallpaper";
-            dlg.DefaultExt = ".png";
-            dlg.Filter = "Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*";
-
-        }
-
-        
-        
-
 
         public Color GetColorRGB(double value)
         {
@@ -161,7 +147,7 @@ namespace Mandelbrot_Set_Wallpaper
             dlg.FileName = "Wallpaper";
             dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             dlg.DefaultExt = ".png";
-            dlg.Filter = "Image Files(*.png)| *.png | All files(*.*) | *.*";
+            dlg.Filter = "Image Files (*.png)|*.png|All files (*.*)|*.*";
 
             if (dlg.ShowDialog() == true)
             {
