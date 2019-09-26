@@ -12,7 +12,7 @@
         <WrapPanel>
             <StackPanel>
                 <!-- Start Postions -->
-                
+
                 <Label Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="Black" Background="LightSkyBlue" >Start Position</Label>
 
                 <WrapPanel>
@@ -32,18 +32,18 @@
                 </WrapPanel>
 
                 <!-- Algorithm -->
-                
+
                 <Label Margin="0,10,0,0" Content="Algorithm" HorizontalContentAlignment="Center" Background="LightSkyBlue"/>
 
                 <!-- Iterations -->
-                
+
                 <WrapPanel>
                     <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">Maximum Iterations</Label>
                     <TextBox Name="MxIt" Margin="10,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="200"></TextBox>
                 </WrapPanel>
 
                 <!-- Resolution -->
-                
+
                 <WrapPanel>
                     <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center">Resolution</Label>
                     <TextBox Name="RsX" Margin="10,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="1920"></TextBox>
@@ -62,77 +62,30 @@
                             HSV
                         </ComboBoxItem>
                     </ComboBox>
-
                 </WrapPanel>
 
                 <Image Name="MiniMap" Source="MiniMap180.png" Width="180" Height="120" Margin="0,10,0,0"></Image>
-                
+
             </StackPanel>
 
-            
-
-            <!-- Preview Image -->
 
 
-            <StackPanel>
+
+            <StackPanel VerticalAlignment="Stretch">
+
+                <!-- Preview Image -->
+
                 <Image Name="PreviewWindow" Height="225" Margin="10,10,0,0" Width="400" VerticalAlignment="Top"/>
+
+                <!-- Creation Buttons -->
+                
                 <WrapPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
                     <Button Name="CreatePreviewButton" Margin="0,10,20,0" Width="125" Height="25" Click="Button_Click">Preview</Button>
                     <Button Name="Save2File" Margin="0,10,10,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Save2File_Click">Save</Button>
                 </WrapPanel>
-               
-            
-                
             </StackPanel>
-
-            
-
-            <!--   
-            <Canvas Width="auto" Height="auto" HorizontalAlignment="Stretch">
-                <Image Name="PreviewWindow" Height="225" Margin="10,10,0,0" VerticalAlignment="Top" Width="400"/>
-    
-                <WrapPanel Canvas.Right="10" Canvas.Bottom="10" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-
-
-                    <Button Name="CreatePreviewButton" Margin="0,0,20,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">Preview</Button>
-                    <Button Name="Save2File" Margin="0,0,10,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Save2File_Click">Save</Button>
-
-                </WrapPanel>
-            </Canvas>
-            -->
-                
-            
 
         </WrapPanel>
-
-        <!--
-        <Canvas>
-            <Image Name="MiniMap" Source="MiniMap180.png" Width="180" Height="120" HorizontalAlignment="Left"></Image>
-            <Button Name="CreatePreviewButton" Margin="0,10,20,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">Preview</Button>
-            <Button Name="Save2File" Margin="0,10,10,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Save2File_Click">Save</Button>
-        </Canvas>
-        -->
-
-        <!-- Creation Buttons -->
-
-
-
-        
-        
-            <!--
-            <StackPanel HorizontalAlignment="Right">
-                <WrapPanel HorizontalAlignment="Right">
-                    <Button Name="CreatePreviewButton" Margin="0,10,20,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">Preview</Button>
-                    <Button Name="Save2File" Margin="0,10,10,0" Width="125" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Save2File_Click">Save</Button>
-                </WrapPanel>
-                
-            </StackPanel>
-            -->
-            
-            
-        
-        
-
     </StackPanel>
 
 </Page>
