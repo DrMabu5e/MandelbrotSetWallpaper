@@ -33,7 +33,7 @@ namespace Mandelbrot_Set_Wallpaper
 
             //mandl.MaxIter = Int32.Parse(MaxIt.Text);
             
-            mandl.StartRE = Convert.ToDouble(StRe.Text);
+            //mandl.StartRE = Convert.ToDouble(StRe.Text);
             mandl.StartIM = Convert.ToDouble(StIm.Text);
             mandl.EndRE = Convert.ToDouble(EnRe.Text);
             mandl.EndIM = Convert.ToDouble(EnIm.Text);

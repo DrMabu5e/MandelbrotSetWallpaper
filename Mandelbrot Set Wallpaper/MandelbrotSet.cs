@@ -11,12 +11,24 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.VisualStudio.Modeling.Diagrams;
+using System.ComponentModel;
 
 
 namespace Mandelbrot_Set_Wallpaper
 {
-    public class MandelbrotSet
+    public class MandelbrotSet : INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged implementation
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void Notify(string propertyName)
+        {
+            if(this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        #endregion INotifyPropertyChanged implementation
         public int MaxIter
         {
             get { return maxIter; }
@@ -29,10 +41,36 @@ namespace Mandelbrot_Set_Wallpaper
         }
         private int maxIter;
         //maxIter = (value > 0 && value <= 2000) ? value :  80; 
-        public int ResolutionX { get; set; } = 4096;
+        public int ResolutionX
+        {
+            get { return _resolutionX; }
+            set
+            {
+                if (value != _resolutionX)
+                {
+                    _resolutionX = value;
+                    Notify("ResolutionX");
+                }
+            }
+        }
+        private int _resolutionX = 4096;
         public int ResolutionY { get; set; } = 2304;
 
-        public double StartRE { get; set; } = -1;
+        public double StartRE
+        {
+            get { return _startRE; }
+            set
+            {
+                if (value != _startRE)
+                {
+                    _startRE = value;
+                    Notify("StartRE");
+                }
+            }
+        }
+        private double _startRE;
+
+        //public double StartRE { get; set; } = -1;
         public double StartIM { get; set; } = 1;
 
         public double EndRE { get; set; } = 0;

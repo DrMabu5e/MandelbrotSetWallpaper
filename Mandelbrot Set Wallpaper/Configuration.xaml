@@ -4,11 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Mandelbrot_Set_Wallpaper"
+      xmlns:model="clr-namespace:Mandelbrot_Set_Wallpaper"
       mc:Ignorable="d" 
       d:DesignHeight="430" d:DesignWidth="598"
       Title="Configuration">
 
-    <StackPanel>
+    <Page.Resources>
+        <model:MandelbrotSet x:Key="myDataSource"></model:MandelbrotSet>
+    </Page.Resources>
+
+    <StackPanel DataContext="{Binding Source={StaticResource myDataSource}}">
         <WrapPanel>
             <StackPanel>
                 <!-- Start Postions -->
@@ -17,7 +22,7 @@
 
                 <WrapPanel>
                     <Label Margin="0,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black">Re</Label>
-                    <TextBox Name="StRe" Margin="10,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="-1"></TextBox>
+                    <TextBox Name="StRe" Margin="10,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="{Binding Path=StartRE, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
                     <Label Margin="10,10,0,0" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black">Im</Label>
                     <TextBox Name="StIm" Margin="10,10,0,0" Width="50" Height="25" HorizontalAlignment="Left" Text="1"></TextBox>
                 </WrapPanel>
@@ -64,7 +69,11 @@
                     </ComboBox>
                 </WrapPanel>
 
-                <Image Name="MiniMap" Source="MiniMap180.png" Width="180" Height="120" Margin="0,10,0,0"></Image>
+                <Canvas Width="180" Height="120" Margin="0,10,0,0">
+                    <Image Name="MiniMap" Source="MiniMap180.png" Width="180" Height="120"></Image>
+
+                </Canvas>
+                
 
             </StackPanel>
 
