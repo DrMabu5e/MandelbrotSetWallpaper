@@ -8,10 +8,13 @@ using System.Numerics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.VisualStudio.Modeling.Diagrams;
 using System.ComponentModel;
+
+
 
 
 namespace Mandelbrot_Set_Wallpaper
@@ -74,12 +77,29 @@ namespace Mandelbrot_Set_Wallpaper
         //public double StartRE { get; set; } = -1;
         public double StartIM { get; set; } = 1;
 
-        public double EndRE { get; set; } = 0;
+        public double EndRE { get; set; } = 1;
         public double EndIM { get; set; } = 0.4375;
 
         public string ColorMode { get; set; } = "RGB";
 
+        //public BitmapImage Preview { get; set; }
 
+        private Bitmap _preview;
+        public Bitmap Preview
+        {
+            get { return _preview; }
+            set
+            {
+                if (value != _preview)
+                {
+                    _preview = value;
+                    Notify("Preview");
+                }
+            }
+        }
+
+
+        #region DoneShitNotTouchingForNow
         public double NumberOfIterationsPerMaxIter(Complex c)
         {
             
@@ -120,11 +140,15 @@ namespace Mandelbrot_Set_Wallpaper
             return rgbcol;
         }
 
-        public BitmapImage PlotPreview()
+        #endregion DoneShitNotTouchingForNow
+
+
+
+        public void PlotPreview()
         {
             int previewX = 400;
             int previewY = 225;
-            Bitmap preview = new Bitmap(previewX, previewY);
+            Bitmap ppreview = new Bitmap(previewX, previewY);
             BitmapImage previewImage = new BitmapImage();
             
             double rx = Convert.ToDouble(previewX);
@@ -155,13 +179,13 @@ namespace Mandelbrot_Set_Wallpaper
                             break;
                     }
 
-                    preview.SetPixel(x, y, col);
+                    ppreview.SetPixel(x, y, col);
                 }
             }
 
             MemoryStream ms = new MemoryStream();
 
-            preview.Save(ms, ImageFormat.Png);
+            ppreview.Save(ms, ImageFormat.Png);
             ms.Position = 0;
 
             previewImage.BeginInit();
@@ -171,9 +195,18 @@ namespace Mandelbrot_Set_Wallpaper
 
             previewImage.Freeze();
 
-            return previewImage;  
+            Preview = ppreview;
+            
         }
 
+        public static BitmapSource BitmapToBitmapSource(Bitmap source)
+        {
+            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                          source.GetHbitmap(),
+                          IntPtr.Zero,
+                          Int32Rect.Empty,
+                          BitmapSizeOptions.FromEmptyOptions());
+        }
 
         public void plot()
         {

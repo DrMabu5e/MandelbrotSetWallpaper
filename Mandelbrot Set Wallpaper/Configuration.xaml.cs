@@ -27,22 +27,23 @@ namespace Mandelbrot_Set_Wallpaper
             
         }
 
+        //public MandelbrotSet mandl = new MandelbrotSet();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MandelbrotSet mandl = new MandelbrotSet();
 
             //mandl.MaxIter = Int32.Parse(MaxIt.Text);
             
-            //mandl.StartRE = Convert.ToDouble(StRe.Text);
+            mandl.StartRE = Convert.ToDouble(StRe.Text);
             mandl.StartIM = Convert.ToDouble(StIm.Text);
             mandl.EndRE = Convert.ToDouble(EnRe.Text);
             mandl.EndIM = Convert.ToDouble(EnIm.Text);
 
             mandl.ColorMode = ColorCombobox.Text;
 
-            PreviewWindow.Source = mandl.PlotPreview();
+            //PreviewWindow.Source = mandl.Preview;
 
-
+            mandl.PlotPreview();
         }
 
         private void Save2File_Click(object sender, RoutedEventArgs e)
