@@ -70,6 +70,7 @@ namespace Mandelbrot_Set_Wallpaper
         }
         private double _startRE;
 
+
         //public double StartRE { get; set; } = -1;
         public double StartIM { get; set; } = 1;
 
